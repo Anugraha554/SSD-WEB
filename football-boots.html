@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studded – Football Boots</title>
+<style>
+  :root {
+    --turf: #1f5c3a;
+    --chalk: #f5f6f2;
+    --ink: #14211a;
+    --line: #e1e5dc;
+    --flare: #ff5a1f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, "Times New Roman", serif; background: var(--chalk); color: var(--ink); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+
+  header { display: flex; justify-content: space-between; align-items: center; padding: 18px 6vw; background: var(--turf); color: var(--chalk); }
+  header .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+  nav a { margin-left: 22px; font-family: Arial, sans-serif; font-size: .95rem; }
+  nav a:hover, nav a:focus-visible { text-decoration: underline; }
+
+  .hero { padding: 70px 6vw; background: linear-gradient(90deg, var(--turf) 0 62%, var(--chalk) 62% 100%); color: var(--chalk); display: flex; align-items: center; gap: 30px; }
+  .hero-text { flex: 1; }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 1.05; margin-bottom: 16px; }
+  .hero p { max-width: 42ch; margin-bottom: 26px; font-family: Arial, sans-serif; }
+  .btn { display: inline-block; background: var(--flare); color: #fff; padding: 12px 26px; font-family: Arial, sans-serif; font-weight: bold; border: 0; border-radius: 4px; cursor: pointer; }
+  .btn:hover { background: #e24a12; }
+  .hero svg { width: min(340px, 40vw); flex-shrink: 0; }
+
+  section { padding: 56px 6vw; }
+  h2 { font-size: 2rem; margin-bottom: 26px; }
+
+  .filters { display: flex; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; }
+  .filters button { font-family: Arial, sans-serif; padding: 8px 18px; border: 1px solid var(--turf); background: transparent; color: var(--turf); border-radius: 20px; cursor: pointer; }
+  .filters button.active, .filters button:hover { background: var(--turf); color: var(--chalk); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 18px; }
+  .card .pic { height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-bottom: 14px; }
+  .card h3 { font-size: 1.1rem; }
+  .card .type { font-family: Arial, sans-serif; font-size: .85rem; color: #5b6b61; }
+  .card .row { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-family: Arial, sans-serif; }
+  .price { font-weight: bold; }
+  .card .btn { padding: 8px 14px; font-size: .85rem; }
+
+  .about { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about p { max-width: 62ch; }
+
+  footer { padding: 28px 6vw; background: var(--ink); color: var(--chalk); font-family: Arial, sans-serif; font-size: .9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 700px) {
+    .hero { background: var(--turf); flex-direction: column; text-align: left; }
+    .hero svg { width: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#top">Studded</a>
+  <nav>
+    <a href="#boots">Boots</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-text">
+    <h1>Boots built for match day.</h1>
+    <p>Firm ground, soft ground and artificial turf. Find the pair that fits how you play.</p>
+    <a class="btn" href="#boots">Shop boots</a>
+  </div>
+  <!-- Simple boot drawing -->
+  <svg viewBox="0 0 300 180" role="img" aria-label="Football boot illustration">
+    <path d="M20 120 C20 70 40 40 70 40 L120 40 C130 70 170 80 220 90 C265 98 285 110 285 130 L285 140 L20 140 Z" fill="#ff5a1f"/>
+    <path d="M20 140 L285 140 L285 152 L20 152 Z" fill="#14211a"/>
+    <g fill="#14211a"><rect x="40" y="152" width="10" height="16"/><rect x="95" y="152" width="10" height="16"/><rect x="190" y="152" width="10" height="16"/><rect x="250" y="152" width="10" height="16"/></g>
+    <g stroke="#f5f6f2" stroke-width="4" stroke-linecap="round"><path d="M135 62 L160 72"/><path d="M150 54 L175 64"/><path d="M165 48 L190 58"/></g>
+  </svg>
+</div>
+
+<section id="boots">
+  <h2>Our boots</h2>
+  <div class="filters" id="filters">
+    <button class="active" data-type="all">All</button>
+    <button data-type="FG">Firm ground</button>
+    <button data-type="SG">Soft ground</button>
+    <button data-type="AG">Artificial turf</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="about" id="about">
+  <h2>About us</h2>
+  <p>We are a small shop run by people who play every weekend. Every boot on this page is one we would wear ourselves. Free returns within 30 days if the fit is wrong.</p>
+</section>
+
+<footer id="contact">
+  <span>Email: hello@studded.example</span>
+  <span>&copy; 2026 Studded</span>
+</footer>
+
+<script>
+  const boots = [
+    { name: "Striker Pro",   type: "FG", label: "Firm ground",     price: 129, color: "#ff5a1f" },
+    { name: "Velocity X",    type: "FG", label: "Firm ground",     price: 149, color: "#2b6fd6" },
+    { name: "Mudlark",       type: "SG", label: "Soft ground",     price: 119, color: "#7a4b2a" },
+    { name: "Deep Pitch",    type: "SG", label: "Soft ground",     price: 99,  color: "#1f5c3a" },
+    { name: "Astro Flex",    type: "AG", label: "Artificial turf", price: 89,  color: "#8a2be2" },
+    { name: "Turf Runner",   type: "AG", label: "Artificial turf", price: 79,  color: "#14211a" }
+  ];
+
+  const grid = document.getElementById("grid");
+
+  function render(filter) {
+    grid.innerHTML = "";
+    boots.filter(b => filter === "all" || b.type === filter).forEach(b => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="pic" style="background:${b.color}22">
+          <svg viewBox="0 0 300 180" width="130" aria-hidden="true">
+            <path d="M20 120 C20 70 40 40 70 40 L120 40 C130 70 170 80 220 90 C265 98 285 110 285 130 L285 140 L20 140 Z" fill="${b.color}"/>
+            <rect x="20" y="140" width="265" height="12" fill="#14211a"/>
+          </svg>
+        </div>
+        <h3>${b.name}</h3>
+        <div class="type">${b.label}</div>
+        <div class="row">
+          <span class="price">$${b.price}</span>
+          <button class="btn" onclick="alert('${b.name} added to cart')">Add to cart</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  document.getElementById("filters").addEventListener("click", e => {
+    if (e.target.tagName !== "BUTTON") return;
+    document.querySelectorAll("#filters button").forEach(btn => btn.classList.remove("active"));
+    e.target.classList.add("active");
+    render(e.target.dataset.type);
+  });
+
+  render("all");
+</script>
+</body>
+</html>
